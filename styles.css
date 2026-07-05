@@ -1,0 +1,182 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f5eef8;
+  --calc-bg: #e8dff5;
+  --display-bg: #d4c4e8;
+  --display-shadow: #b8a0d0;
+  --text: #4a3f5c;
+
+  /* Pastel face colors */
+  --pastel-1: #ffb3c6;
+  --pastel-2: #ffd6a5;
+  --pastel-3: #fdffb6;
+  --pastel-4: #caffbf;
+  --pastel-5: #9bf6ff;
+  --pastel-6: #a0c4ff;
+  --pastel-7: #bdb2ff;
+  --pastel-8: #ffc6ff;
+  --pastel-9: #ffadad;
+  --pastel-10: #d0f4de;
+  --pastel-11: #fcf6bd;
+  --pastel-12: #e2cfea;
+
+  /* Deeper shadow tones (offset “poke out”) */
+  --deep-1: #d97a96;
+  --deep-2: #e6a86a;
+  --deep-3: #d9d97a;
+  --deep-4: #8fd98a;
+  --deep-5: #5ec9d9;
+  --deep-6: #6a8fd9;
+  --deep-7: #8a7ad9;
+  --deep-8: #d97ad9;
+  --deep-9: #d97a7a;
+  --deep-10: #8fd9a8;
+  --deep-11: #d9c96a;
+  --deep-12: #b08ac4;
+  --deep-fn: #9a8ab8;
+  --deep-op: #7a9ad9;
+  --deep-eq: #7ad98a;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: linear-gradient(145deg, #fce4ec 0%, #e3f2fd 40%, #f3e5f5 100%);
+  color: var(--text);
+  padding: 1.5rem;
+}
+
+.calculator {
+  background: var(--calc-bg);
+  border-radius: 28px;
+  padding: 1.75rem;
+  box-shadow:
+    12px 12px 0 #c4b0dc,
+    0 24px 48px rgba(120, 90, 150, 0.25);
+  max-width: 340px;
+  width: 100%;
+}
+
+.display-wrap {
+  background: var(--display-bg);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow:
+    inset 4px 4px 8px rgba(255, 255, 255, 0.5),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.08),
+    6px 6px 0 var(--display-shadow);
+}
+
+.display {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: right;
+  word-break: break-all;
+  min-height: 5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.btn {
+  position: relative;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 1rem 0.5rem;
+  color: var(--text);
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+  outline: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  /* 3D raised look — deeper color pokes out bottom-right */
+  transform: translate(-2px, -2px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #7a6a9a;
+  outline-offset: 2px;
+}
+
+.btn:active,
+.btn.pressed {
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px 0 var(--btn-deep) !important;
+}
+
+.c1  { --btn-face: var(--pastel-1);  --btn-deep: var(--deep-1); }
+.c2  { --btn-face: var(--pastel-2);  --btn-deep: var(--deep-2); }
+.c3  { --btn-face: var(--pastel-3);  --btn-deep: var(--deep-3); }
+.c4  { --btn-face: var(--pastel-4);  --btn-deep: var(--deep-4); }
+.c5  { --btn-face: var(--pastel-5);  --btn-deep: var(--deep-5); }
+.c6  { --btn-face: var(--pastel-6);  --btn-deep: var(--deep-6); }
+.c7  { --btn-face: var(--pastel-7);  --btn-deep: var(--deep-7); }
+.c8  { --btn-face: var(--pastel-8);  --btn-deep: var(--deep-8); }
+.c9  { --btn-face: var(--pastel-9);  --btn-deep: var(--deep-9); }
+.c10 { --btn-face: var(--pastel-10); --btn-deep: var(--deep-10); }
+.c11 { --btn-face: var(--pastel-11); --btn-deep: var(--deep-11); }
+.c12 { --btn-face: var(--pastel-12); --btn-deep: var(--deep-12); }
+
+.btn-num,
+.btn-fn,
+.btn-op,
+.btn-eq {
+  background: var(--btn-face);
+  box-shadow:
+    6px 6px 0 var(--btn-deep),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.btn-fn {
+  font-size: 1.1rem;
+}
+
+.btn-op {
+  font-size: 1.5rem;
+}
+
+.btn-eq {
+  font-size: 1.5rem;
+}
+
+.btn-wide {
+  grid-column: span 2;
+}
+
+.hint {
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  text-align: center;
+  opacity: 0.65;
+  line-height: 1.4;
+}
+
+@media (max-width: 380px) {
+  .btn {
+    font-size: 1.15rem;
+    padding: 0.85rem 0.25rem;
+  }
+
+  .display {
+    font-size: 2rem;
+  }
+}

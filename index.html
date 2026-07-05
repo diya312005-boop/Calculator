@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pastel 3D Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="calculator">
+    <div class="display-wrap">
+      <div class="display" id="display" aria-live="polite" aria-label="Calculator display">0</div>
+    </div>
+    <div class="keypad" role="group" aria-label="Calculator keypad">
+      <button type="button" class="btn btn-fn c12" data-action="clear" data-key="Escape">AC</button>
+      <button type="button" class="btn btn-fn c11" data-action="toggle-sign" data-key="±">±</button>
+      <button type="button" class="btn btn-fn c8" data-action="percent" data-key="%">%</button>
+      <button type="button" class="btn btn-op c6" data-action="operator" data-value="/" data-key="/">÷</button>
+
+      <button type="button" class="btn btn-num c1" data-action="digit" data-value="7" data-key="7">7</button>
+      <button type="button" class="btn btn-num c2" data-action="digit" data-value="8" data-key="8">8</button>
+      <button type="button" class="btn btn-num c3" data-action="digit" data-value="9" data-key="9">9</button>
+      <button type="button" class="btn btn-op c7" data-action="operator" data-value="*" data-key="*">×</button>
+
+      <button type="button" class="btn btn-num c4" data-action="digit" data-value="4" data-key="4">4</button>
+      <button type="button" class="btn btn-num c5" data-action="digit" data-value="5" data-key="5">5</button>
+      <button type="button" class="btn btn-num c9" data-action="digit" data-value="6" data-key="6">6</button>
+      <button type="button" class="btn btn-op c6" data-action="operator" data-value="-" data-key="-">−</button>
+
+      <button type="button" class="btn btn-num c10" data-action="digit" data-value="1" data-key="1">1</button>
+      <button type="button" class="btn btn-num c11" data-action="digit" data-value="2" data-key="2">2</button>
+      <button type="button" class="btn btn-num c12" data-action="digit" data-value="3" data-key="3">3</button>
+      <button type="button" class="btn btn-op c6" data-action="operator" data-value="+" data-key="+">+</button>
+
+      <button type="button" class="btn btn-num btn-wide c5" data-action="digit" data-value="0" data-key="0">0</button>
+      <button type="button" class="btn btn-num c3" data-action="decimal" data-key=".">.</button>
+      <button type="button" class="btn btn-eq c4" data-action="equals" data-key="Enter">=</button>
+    </div>
+    </div>
+  <script src="script.js"></script>
+</body>
+</html>
