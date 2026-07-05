@@ -3,6 +3,7 @@
 
   const display = document.getElementById("display");
   const buttons = document.querySelectorAll(".btn");
+  const clickSound = document.getElementById("clickSound");
 
   let currentValue = "0";
   let previousValue = "";
@@ -20,27 +21,12 @@
   }
 
   function playAncientClick() {
-    const ctx = getAudioContext();
-    if (ctx.state === "suspended") {
-      ctx.resume();
-    }
-
-    const now = ctx.currentTime;
-
-    // Wooden / stone tap — low thud
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = "sine";
-    osc.frequency.setValueAtTime(180, now);
-    osc.frequency.exponentialRampToValueAtTime(60, now + 0.06);
-    gain.gain.setValueAtTime(0.35, now);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start(now);
-    osc.stop(now + 0.12);
-
-    
+    if (!clickSound) return;
+  
+    clickSound.pause();
+    clickSound.currentTime = 0;
+    clickSound.volume = 0.4;
+    clickSound.play().catch(console.error);
   }
 
   function flashButton(btn) {
